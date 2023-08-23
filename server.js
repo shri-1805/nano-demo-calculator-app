@@ -10,7 +10,7 @@ app.use(express.json());
 const baseRouter = express.Router();
 
 baseRouter.get('/greeting', (req, res) => {
-    return res.send('Hello World!');
+    return res.send('Hello world!');
 });
 
 baseRouter.post('/add', (req, res) => {
@@ -19,7 +19,7 @@ baseRouter.post('/add', (req, res) => {
     if(typeof a !== 'number' || typeof b !== 'number')
         return res.status(400).send("Add get: Not a number");
     const result=a+b;
-    res.json({ "Result": result });
+    res.status(200).json({ "result": result });
 });
 
 
@@ -29,7 +29,7 @@ baseRouter.post('/subtract', (req, res) => {
     if(typeof a !== 'number' || typeof b !== 'number')
         return res.status(400).send("Sub get: Not a number");
     const result=a-b;
-    res.json({ "Result": result });
+    res.status(200).json({ "result": result });
 });
 
 app.use(baseUrl, baseRouter);

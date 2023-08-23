@@ -14,22 +14,14 @@ baseRouter.get('/greeting', (req, res) => {
 });
 
 baseRouter.post('/add', (req, res) => {
-    const a=req.body.a;
-    const b=req.body.b;
-    if(typeof a !== 'number' || typeof b !== 'number')
-        return res.status(400).send("Add get: Not a number");
-    const result=a+b;
+    const  {first,second}=req.body;
+    const result=first+second;
     res.status(200).json({ "result": result });
+
 });
-
-
 baseRouter.post('/subtract', (req, res) => {
-    const a=req.body.a;
-    const b=req.body.b;
-    if(typeof a !== 'number' || typeof b !== 'number')
-        return res.status(400).send("Sub get: Not a number");
-    const result=a-b;
-    res.status(200).json({ "result": result });
+    const { first, second } = req.body;
+    res.json({ "result": first - second });
 });
 
 app.use(baseUrl, baseRouter);
